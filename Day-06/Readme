@@ -1,1 +1,35 @@
 
+Detailed Notes: Ansible Zero to Hero (Episode 6) - Start to 10:50
+This session focuses on Ansible Collections, Variables, and Variable Precedence,
+shifting from managing traditional virtual machines to interacting with third-party APIs (e.g., AWS).
+
+1. Recap of Previous Episodes (0:00 - 2:06)
+Episode 1: Introduction to Ansible basics.
+Episode 2: Ad-hoc commands, inventory files, and passwordless authentication.
+Episode 3: First Playbook and YAML basics (data types).
+Episode 4: Understanding Ansible Roles, folder structures, and playbooks.
+Episode 5: Deep dive into Ansible Galaxy and using pre-built roles (e.g., installing Docker on EC2).
+
+2. Overview of Today's Objectives (2:06 - 3:51)
+Infrastructure Provisioning: Learn to create AWS resources (EC2, S3) using Ansible Collections.
+Ansible Variables: Optimize playbooks by replacing hardcoded values with variables.
+Jinja2 Templating: Understand the standard for implementing variables in Ansible.
+Variable Precedence: Analyze the priority order when variables are declared in multiple locations.
+
+3. Managing Infrastructure via APIs vs. SSH (4:06 - 10:50)
+The Traditional Approach:
+Ansible runs on a Control Node and connects to Managed Nodes (remote VMs) via
+SSH/passwordless authentication.
+Ansible modules are copied to and executed on the remote managed node (where Python must be installed).
+The API-Based Approach (Collections):
+For platforms like AWS, Azure, GCP, or Network Appliances (e.g., Cisco), you cannot 
+SSH directly into the infrastructure.
+Instead, Ansible uses Collections.
+How it works: The module is installed/executed on your local Control Node. 
+This Python-based code then communicates directly with the target's API (e.g., AWS APIs) to provision
+resources.
+Ansible Collections: These are bundles of roles, modules, and plugins tailored for 
+specific third-party tools. You can find these in the official Ansible documentation or Ansible Galaxy. Users interact with them by writing standard YAML files, just as they would for built-in modules.
+
+
+
