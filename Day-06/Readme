@@ -17,10 +17,12 @@ Jinja2 Templating: Understand the standard for implementing variables in Ansible
 Variable Precedence: Analyze the priority order when variables are declared in multiple locations.
 
 3. Managing Infrastructure via APIs vs. SSH (4:06 - 10:50)
+
 The Traditional Approach:
 Ansible runs on a Control Node and connects to Managed Nodes (remote VMs) via
 SSH/passwordless authentication.
 Ansible modules are copied to and executed on the remote managed node (where Python must be installed).
+
 The API-Based Approach (Collections):
 For platforms like AWS, Azure, GCP, or Network Appliances (e.g., Cisco), you cannot 
 SSH directly into the infrastructure.
@@ -29,7 +31,8 @@ How it works: The module is installed/executed on your local Control Node.
 This Python-based code then communicates directly with the target's API (e.g., AWS APIs) to provision
 resources.
 Ansible Collections: These are bundles of roles, modules, and plugins tailored for 
-specific third-party tools. You can find these in the official Ansible documentation or Ansible Galaxy. Users interact with them by writing standard YAML files, just as they would for built-in modules.
+specific third-party tools. You can find these in the official Ansible documentation or Ansible Galaxy.
+Users interact with them by writing standard YAML files, just as they would for built-in modules.
 
 
 
