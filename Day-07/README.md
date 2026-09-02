@@ -60,6 +60,24 @@ Comparison: Unlike traditional Shell scripting, which might fail or create dupli
 
 Resolving the Loop Issue (26:37 - 31:00)
 
+The segment from (31:01 - 34:20) focuses on setting up passwordless authentication for the previously provisioned EC2 instances. This is a crucial prerequisite for subsequent configuration management tasks.
+
+Key Steps for Passwordless Authentication:
+Recommended Method: The instructor demonstrates using ssh-copy-id (31:36), which is considered the most popular and straightforward approach for managing SSH keys.
+
+Command Execution: The command used is ssh-copy-id -f -i @ (31:49).
+The -f flag is used to force the copying of the identity file.
+The user must provide the specific .pem file (e.g., ABI_AWS_key.pem) generated during instance creation.
+
+Targeting Instances:
+For the Amazon Linux instance, the connection is established using ec2-user at the instance's IP address (32:45).
+For the Ubuntu instances, the connection is established using the ubuntu username (33:32).
+
+Verification: Once the keys are copied, the instructor verifies the setup by connecting to the instances via SSH without needing the .pem file or a password (33:10, 33:46).
+
+Scaling for Production:
+The instructor notes that this manual process can be scaled for large numbers of instances by using looping constructs (such as a for loop in bash) or by utilizing SSH agents to simplify authentication management (33:57 - 34:13).
+
 Dynamic Variables: To ensure Ansible creates three distinct resources, the narrator updates the Loop syntax. Instead of passing only an AMI ID, the loop is modified to accept a dictionary containing both the image ID and a unique name for each instance.
 
 Implementation: By updating the name field to use item.name (27:22), each iteration of the loop creates a unique identity for the virtual machine, effectively bypassing the idempotency check that was causing the failure.
