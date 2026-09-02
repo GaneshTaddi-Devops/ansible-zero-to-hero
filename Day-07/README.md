@@ -86,8 +86,28 @@ Refined Task: The narrator refines the Playbook to include these variables. Afte
 
 Verification: By inspecting the AWS EC2 dashboard (29:35), the narrator confirms that all three instances (Manage Node 1, Manage Node 2, and Manage Node 3) are successfully provisioned. The video notes an additional troubleshooting step: using the tags field within the Ansible task to ensure the AWS console properly reflects the specific names assigned via the loop (30:02).
 
+####  The final segment of the video (34:21 - 47:27) focuses on automating the shutdown process for specific EC2 instances using Ansible. This task demonstrates the power of conditional logic in infrastructure management.
 
+Automating Shutdown with Conditionals:
 
+Inventory Setup (35:30): An inventory file is created to manage the three EC2 instances, allowing Ansible to target the specific nodes.
+
+The Playbook Strategy (36:13): The goal is to shut down only the Ubuntu instances while leaving the Amazon Linux instance running. Since the script runs on all nodes, a conditional check is required to differentiate the operating systems.
+
+Using 'When' Conditions (38:59): The instructor employs the when keyword to apply logic. The initial attempt used ansible_facts.os_family == 'Debian', but the instructor later identifies the correct variable to be ansible_os_family (43:08).
+
+Gathering Facts (42:13): The instructor demonstrates the use of the debug module to inspect gathered facts from the managed nodes. This is a critical debugging practice to verify the correct variable names (e.g., os_family) provided by Ansible during the initial fact-gathering phase.
+
+Execution and Verification (44:43): By running the updated playbook with the correct variable, Ansible successfully identifies the Ubuntu (Debian-based) instances and executes the shutdown command, while skipping the Amazon Linux (Red Hat-based) instance.
+
+Key Takeaways for Automation:
+
+Idempotency: The process respects the state of the machines, ensuring that the shutdown command is only applied where the condition is met.
+
+Graceful Handling: The shutdown command includes a timing element, and the instructor notes that Elastic IP addresses are recommended for production environments to maintain connectivity after reboots (46:44).
+
+Conditional Logic: The ability to target subsets of infrastructure based on system-level facts is essential for scalable configuration management.
+########################################################################################################
 
 
 
