@@ -95,6 +95,7 @@ Inventory Setup (35:30): An inventory file is created to manage the three EC2 in
 The Playbook Strategy (36:13): The goal is to shut down only the Ubuntu instances while leaving the Amazon Linux instance running. Since the script runs on all nodes, a conditional check is required to differentiate the operating systems.
 
 Using 'When' Conditions (38:59): The instructor employs the when keyword to apply logic. The initial attempt used ansible_facts.os_family == 'Debian', but the instructor later identifies the correct variable to be ansible_os_family (43:08).
+<img width="454" height="306" alt="image" src="https://github.com/user-attachments/assets/3f119b9f-609d-4732-b8d1-50303d96a5d3" />
 
 Gathering Facts (42:13): The instructor demonstrates the use of the debug module to inspect gathered facts from the managed nodes. This is a critical debugging practice to verify the correct variable names (e.g., os_family) provided by Ansible during the initial fact-gathering phase.
 
