@@ -31,9 +31,13 @@ To avoid manual entry, use the flag --vault-password-file to reference a local f
 
 Managing existing secrets:
 Decrypt: Use ansible-vault decrypt .yaml to revert a file to plain text.
+
 Edit: Use ansible-vault edit .yaml to safely modify contents without fully decrypting and re-encrypting.
+
 View: Use ansible-vault view .yaml to display the contents on the terminal without modifying the file.
+
 Encrypting existing files: Use ansible-vault encrypt .yaml for files that were already created in plain text.
+
 Encrypting specific strings: Use ansible-vault encrypt_string to secure individual variables within a playbook rather than encrypting the entire file.
 
 Best Practices for Secrets Management (23:02 - 27:18)
