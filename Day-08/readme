@@ -28,3 +28,26 @@ Used the ansible.builtin.apt module with a loop to manage OpenSSH and OpenSSL up
 (20:27) Applied ignore_errors: yes to allow the playbook to continue executing the subsequent 'verify Docker' task despite the package check failure.
 Verification: Demonstrated that using ignore_errors: yes prevents the playbook from stopping prematurely,
 allowing the automation workflow to complete its remaining steps (21:16).
+
+The segment from (22:31) to (30:56) covers advanced conditional logic in Ansible using register 
+variables and the when keyword to perform tasks based on the outcomes of previous operations.
+
+Using Register to Capture Output
+
+The Register Keyword: (24:24) When executing a command, you can capture its result into a variable using
+the register keyword. This allows Ansible to store the command's exit status, standard output, 
+and potential error messages as a JSON object.
+
+Debugging: (25:15) The narrator demonstrates using the ansible.builtin.debug module with the var parameter
+to inspect the contents of the registered variable. This is critical for understanding what data is available for conditional checks.
+Applying Conditional Logic (When)
+
+Conditional Execution: (23:22) To satisfy requirements where a subsequent task should only run if the previous one failed, the when keyword is used.
+JSON Field Analysis: (26:07) By analyzing the JSON object produced by the register command, the user can target specific fields, such as failed (a boolean), to control the workflow.
+Implementation: (27:45) The example shown installs Docker only when a previous attempt to check the Docker version failed:
+when: output.failed
+
+Practical Demonstration
+Workflow: (28:43) The playbook follows a logic flow: Verify Docker installation → Register the outcome → Conditionally trigger the installation if the verification failed.
+Verification: (29:30) After the playbook execution, the speaker verifies on the target EC2 instances that Docker was successfully installed as a result of the conditional logic.
+This approach ensures that playbooks are idempotent and resilient, preventing unnecessary errors while dynamically reacting to the state of the managed nodes.
